@@ -1,3 +1,25 @@
+<?php
+            session_start();
+            $arq = '';
+            if (isset($_SESSION['id'])){
+                $arquivo = './arquivos/resultados/'.$_SESSION['id'].'.txt';
+                if (is_file($arquivo)){
+                    $handle = fopen( $arquivo, 'r' );
+                    $ler = fread($handle, 1000);
+                    //echo $ler;
+                    //fclose($handle);
+                    //echo "<img class='w-100' src='./arquivos/feitos/";
+                    //echo $_SESSION['id'];
+                    //echo ".";
+                    //echo $_SESSION['ext'];
+                    //echo "'>";
+                    session_destroy();
+                }else{
+                    echo"Seu arquivo está em processamento, recarrege a pagina";
+                };
+            };
+        ?>
+
 <html>
 
     <head>
@@ -8,21 +30,19 @@
 
     <body class="container d-flex align-items-center justify-content-center" style="background: #407070;">
         <div class="border d-flex flex-column align-items-center justify-content-center p-4 text-white" style="border-radius: 15px; background: gray; gap:20px;">
-        <?php
-            session_start();
-            if (isset($_SESSION['id'])){
-                $arquivo = './arquivos/resultados/'.$_SESSION['id'].'.txt';
-                if (is_file($arquivo)){
-                    $handle = fopen( $arquivo, 'r' );
-                    $ler = fread($handle, 1000);
-                    echo $ler;
-                    fclose($handle);
-                };
-                session_destroy();
-            };
-        ?>
-        <a href="http://localhost:8080/upload/" class="bg-white text-dark p-2 border">Voltar</a>
+        <canvas id="Canvas"></canvas>
+        <a href="http://localhost:8080/Spectrum" class="bg-white text-dark p-2 border">Voltar</a>
         </div>
     </body>
+    <script>
+        let canvas = document.getElementById('Canvas');
+        let ctx= canvas.getContext('2d');
+        let arq = new Image();
+        arq.src = '<?php echo"$arq"; ?>';
+        console.log(arq.src)
+        canvas.width= 480;
+        canvas.height= 340;
+        ctx.drawImage(arq, 0, 0);
 
+    </script>
 </html>

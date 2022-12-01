@@ -4,13 +4,13 @@ import numpy as np
 import tensorflow
 from keras.models import load_model
 
-model = load_model("C:/xampp/htdocs/upload/python/modelo_02_expressoes.h5")
+model = load_model("C:/xampp/htdocs/Spectrum/python/modelo_02_expressoes.h5")
 expressoes = ["Raiva", "Nojo", "Medo", "Feliz", "Triste", "Surpreso", "Neutro"]
 
-def detectar(imagem, path, larquivo): 
+def detectar(imagem, larquivo): 
     
     gray = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
-    face_cascade = cv2.CascadeClassifier('C:/xampp/htdocs/upload/python/haarcascade_frontalface_default.xml')
+    face_cascade = cv2.CascadeClassifier('C:/xampp/htdocs/Spectrum/python/haarcascade_frontalface_default.xml')
     faces = face_cascade.detectMultiScale(gray, 1.1, 3)
     for (x, y, w, h) in faces:
         cv2.rectangle(imagem, (x, y), (x + w, y + h), (0, 255, 0), 1)
@@ -38,18 +38,18 @@ def detectar(imagem, path, larquivo):
                 nome.append(caractere)
         nome = "".join(nome)
 
-        arquivo = open("C:/xampp/htdocs/upload/arquivos/resultados/"+str(nome)+".txt", "a")
+        arquivo = open("C:/xampp/htdocs/Spectrum/arquivos/resultados/"+str(nome)+".txt", "a")
         arquivo.write(prediction)
         arquivo.write('\n')
         arquivo.write('x: ' + str(x) + ' y: ' + str(y) + ' w: ' + str(w) +' h: ' + str(h))
         arquivo.write('\n')
 
-    os.replace(path, "C:/xampp/htdocs/upload/arquivos/feitos/"+str(larquivo))
+    os.replace("C:/xampp/htdocs/Spectrum/arquivos/a fazer/"+str(larquivo), "C:/xampp/htdocs/Spectrum/arquivos/feitos/"+str(larquivo))
         
 def img_video(imagem_ou_video, path, arquivo):
     if imagem_ou_video == 'imagem':
         imagem = cv2.imread(path)
-        detectar(imagem, path, arquivo)
+        detectar(imagem, arquivo)
     else:
         video = cv2.VideoCapture(path)
         while True: 
@@ -62,7 +62,7 @@ def img_video(imagem_ou_video, path, arquivo):
 #passar 'imagem' ou  'video' e o path do arquivo
 #img_video('video', 'video.mp4')
 
-pasta = 'C:/xampp/htdocs/upload/arquivos/a fazer'
+pasta = 'C:/xampp/htdocs/Spectrum/arquivos/a fazer'
 
 while True:
     for diretorio, subpastas, arquivos in os.walk(pasta):
