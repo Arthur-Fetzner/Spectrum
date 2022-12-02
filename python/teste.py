@@ -7,12 +7,24 @@ from keras.models import load_model
 model = load_model("C:/xampp/htdocs/Spectrum/python/modelo_02_expressoes.h5")
 expressoes = ["Raiva", "Nojo", "Medo", "Feliz", "Triste", "Surpreso", "Neutro"]
 
-def detectar(imagem, larquivo): 
+def detectar(imagem, larquivo):
+    nome = []
+    for caractere in larquivo:
+        if caractere.isdigit():
+            nome.append(caractere)
+    nome = "".join(nome)
+    arquivo = open("C:/xampp/htdocs/Spectrum/arquivos/resultados/"+str(nome)+".txt", "a")
     
     gray = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
     face_cascade = cv2.CascadeClassifier('C:/xampp/htdocs/Spectrum/python/haarcascade_frontalface_default.xml')
     faces = face_cascade.detectMultiScale(gray, 1.1, 3)
+    num_faces = 0
     for (x, y, w, h) in faces:
+        num_faces += 1
+    
+    contador = 0
+    for (x, y, w, h) in faces:
+        contador += 1
         cv2.rectangle(imagem, (x, y), (x + w, y + h), (0, 255, 0), 1)
         roi_gray = gray[y:y + h, x:x + w]
         roi_gray = roi_gray.astype("float") / 255.0
@@ -31,19 +43,12 @@ def detectar(imagem, larquivo):
         
         #print(prediction)
         #print(path)
-        nome = []
 
-        for caractere in larquivo:
-            if caractere.isdigit():
-                nome.append(caractere)
-        nome = "".join(nome)
-
-        arquivo = open("C:/xampp/htdocs/Spectrum/arquivos/resultados/"+str(nome)+".txt", "a")
-        arquivo.write(prediction)
-        arquivo.write('\n')
-        arquivo.write('x: ' + str(x) + ' y: ' + str(y) + ' w: ' + str(w) +' h: ' + str(h))
-        arquivo.write('\n')
-
+        if (contador == num_faces):
+            arquivo.write(prediction+','+str(x)+','+str(y)+','+str(w)+','+str(h))
+        else:
+            arquivo.write(prediction+','+str(x)+','+str(y)+','+str(w)+','+str(h)+'/')
+    
     os.replace("C:/xampp/htdocs/Spectrum/arquivos/a fazer/"+str(larquivo), "C:/xampp/htdocs/Spectrum/arquivos/feitos/"+str(larquivo))
         
 def img_video(imagem_ou_video, path, arquivo):

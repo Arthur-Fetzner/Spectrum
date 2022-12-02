@@ -41,9 +41,9 @@
                 let id = "<?php if (isset($_SESSION['id'])){ echo $_SESSION['id'];};?>"
                 console.log(+id)
                 if (id != 0){
-                    window.location.href = "http://localhost:8080/Spectrum/resultado.php"
+                    window.location.href = "https://3db9-2804-14d-4c84-8e1d-2814-3eee-9d68-dc59.sa.ngrok.io/Spectrum/resultado.php"
                 }
-            }, 1500);
+            }, 5000);
         
         </script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -51,8 +51,8 @@
     </head>
 
     <body class="container d-flex align-items-center justify-content-center" style="background: #407070;">
-        <form action="" method="post" enctype="multipart/form-data" class="border d-flex flex-column p-4" style="border-radius: 15px; background: gray;">
-            <input type="file" name="file" class="mb-4">
+        <form action="" method="post" enctype="multipart/form-data" class="border d-flex flex-column p-4 w-50" style="border-radius: 15px; background: gray;">
+            <input type="file" name="file" class="mb-4" required>
             <input type="submit" name="acao" value="Enviar">
         </form>
     </body>
