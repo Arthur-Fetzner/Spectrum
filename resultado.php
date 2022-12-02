@@ -28,7 +28,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="style-w-h.css">
     <style>
         .br-15{
             border-radius: 15px;
@@ -39,7 +38,7 @@
     <div class="w-100 d-flex align-items-center justify-content-center">
         <div class="p-4 d-flex flex-column align-items-center border br-15 text-light" style="background-color: #616161; width:400px;">
             <canvas id="Canvas" class="w-100 mb-4"></canvas>
-            <a href="http://localhost:80/Spectrum/unset.php" class="btn br-15 text-light" style="background-color: #424242;">Voltar</a>
+            <a href="https://aaa9-2804-14d-4c84-8e1d-89fe-7c25-c255-aa47.sa.ngrok.io/Spectrum/unset.php" class="btn br-15 text-light" style="background-color: #424242;">Voltar</a>
         </div>
     </div>
     <script>

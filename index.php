@@ -40,7 +40,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="style-w-h.css">
     <style>
         .br-15{
             border-radius: 15px;
@@ -70,7 +69,7 @@
         }else{
             if(id != 0){
                 document.getElementById('noticiar').innerHTML = 'Sua imagem está em processamento'
-                setTimeout(()=>{window.location.href = "http://localhost:80/Spectrum/resultado.php"},3000) 
+                setTimeout(()=>{window.location.href = "https://aaa9-2804-14d-4c84-8e1d-89fe-7c25-c255-aa47.sa.ngrok.io/Spectrum/resultado.php"},3000) 
             }
         }
 
