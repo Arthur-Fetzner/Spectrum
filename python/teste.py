@@ -1,3 +1,4 @@
+import pathlib 
 import os
 import cv2
 import numpy as np
@@ -72,7 +73,10 @@ pasta = 'C:/xampp/htdocs/Spectrum/arquivos/a fazer'
 while True:
     for diretorio, subpastas, arquivos in os.walk(pasta):
         for arquivo in arquivos:
+            extensao = pathlib.Path(arquivo).suffix
             link = os.path.join(diretorio, arquivo)
-            print(link)
-            print(arquivo)
-            img_video('imagem', link, arquivo)
+            if(extensao == '.png' or extensao == '.jpg' or extensao == '.jfif'):
+                print(link)
+                img_video('imagem', link, arquivo)
+            else:
+                os.replace(link, "C:/xampp/htdocs/Spectrum/arquivos/entradas invalidas/"+str(arquivo))
