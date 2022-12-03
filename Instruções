@@ -1,0 +1,2 @@
+- Criar uma pasta chamada 'arquivos' na parta principal, dentro dela criar otras 4 pastas, 'entradas invalidas', 'a fazer', 'feitos' e 'resultados'.
+- Para exucutar o programa primeiro execute o 'teste.py' que está na pasta python, lembre de baixar todas as bibliotecas usadas, depois inicie seu servidor pelo xampp, agora você pode abrir o arquivo 'index.php' nos seu localhost.
